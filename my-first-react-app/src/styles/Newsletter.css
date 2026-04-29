@@ -1,0 +1,98 @@
+.newsletter {
+  padding: 5rem 2rem;
+  background: linear-gradient(135deg, var(--accent), rgba(170, 59, 255, 0.9));
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 20px;
+}
+
+.newsletter-content {
+  text-align: center;
+  color: white;
+}
+
+.newsletter-content h2 {
+  font-size: 2.5rem;
+  margin: 0 0 1rem 0;
+  font-weight: 800;
+}
+
+.newsletter-content p {
+  font-size: 1.2rem;
+  margin: 0 0 2rem 0;
+  opacity: 0.95;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 1rem;
+  max-width: 500px;
+  margin: 0 auto 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.newsletter-form input {
+  flex: 1;
+  min-width: 250px;
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--text-h);
+}
+
+.newsletter-form input::placeholder {
+  color: var(--text);
+}
+
+.newsletter-form input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+.newsletter-form button {
+  min-width: 150px;
+}
+
+.newsletter-form .btn-primary {
+  background: white;
+  color: var(--accent);
+  border: none;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.newsletter-form .btn-primary:hover {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.success-message {
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  animation: slideInUp 0.5s ease-out;
+}
+
+@media (max-width: 768px) {
+  .newsletter {
+    padding: 3rem 1.5rem;
+  }
+
+  .newsletter-content h2 {
+    font-size: 2rem;
+  }
+
+  .newsletter-content p {
+    font-size: 1rem;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+  }
+
+  .newsletter-form input,
+  .newsletter-form button {
+    width: 100%;
+  }
+}

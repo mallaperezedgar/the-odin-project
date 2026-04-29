@@ -1,0 +1,50 @@
+/* contenedor del juego */
+.juego {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  font-family: Arial, sans-serif;
+}
+
+/* tablero 3x3 */
+.tablero {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+/* cada casilla */
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  background-color: #f0f0f0;
+  border: 2px solid #333;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+/* efecto al pasar el mouse */
+.cell:hover {
+  background-color: #ddd;
+}
+
+/* mensaje del juego */
+#mensaje {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  height: 1.5rem; /* para que no salte cuando aparezca texto */
+}
+
+/* botón reiniciar */
+#reiniciar {
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  background-color: #555;}

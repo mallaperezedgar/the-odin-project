@@ -1,0 +1,197 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Courier New', monospace;
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1a3e 50%, #0f2c4a 100%);
+    color: #e0e0e0;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Fondo animado */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(0, 150, 200, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(0, 100, 150, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+h1 {
+    margin: 30px 20px 10px;
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    color: #00d4ff;
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.5), 0 0 40px rgba(0, 150, 200, 0.3);
+    letter-spacing: 3px;
+    animation: glow-pulse 3s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+    0%, 100% {
+        text-shadow: 0 0 20px rgba(0, 212, 255, 0.5), 0 0 40px rgba(0, 150, 200, 0.3);
+    }
+    50% {
+        text-shadow: 0 0 30px rgba(0, 212, 255, 0.8), 0 0 60px rgba(0, 150, 200, 0.5);
+    }
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin: 20px 0 15px;
+    color: #00d4ff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.tableros {
+    display: flex;
+    gap: 80px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 30px 0;
+}
+
+.tableros > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tablero {
+    display: grid;
+    grid-template-columns: repeat(10, 45px);
+    grid-template-rows: repeat(10, 45px);
+    gap: 3px;
+    padding: 20px;
+    background: linear-gradient(135deg, #0f2c4a 0%, #1a3a52 100%);
+    border: 3px solid #00d4ff;
+    border-radius: 8px;
+    box-shadow: 
+        0 0 20px rgba(0, 212, 255, 0.3),
+        0 0 40px rgba(0, 150, 200, 0.2),
+        inset 0 0 20px rgba(0, 212, 255, 0.1);
+}
+
+.celda {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, #162d4a 0%, #0f4a6a 100%);
+    border: 1px solid #004d7a;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.celda::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent 30%, rgba(0, 212, 255, 0.1) 50%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.celda:hover {
+    background: linear-gradient(135deg, #1a4d7a 0%, #0f6a9a 100%);
+    border-color: #00d4ff;
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.5), inset 0 0 10px rgba(0, 212, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.celda:hover::before {
+    opacity: 1;
+}
+
+.golpe {
+    background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%) !important;
+    border-color: #ff8888 !important;
+    box-shadow: 0 0 15px rgba(255, 68, 68, 0.6), inset 0 0 10px rgba(255, 100, 100, 0.3) !important;
+    animation: hit-explosion 0.5s ease-out;
+}
+
+@keyframes hit-explosion {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.fallo {
+    background: linear-gradient(135deg, #888888 0%, #666666 100%) !important;
+    border-color: #aaaaaa !important;
+    box-shadow: 0 0 10px rgba(136, 136, 136, 0.4) !important;
+}
+
+.barco {
+    background: linear-gradient(135deg, #333366 0%, #222244 100%) !important;
+    border-color: #666699 !important;
+    box-shadow: inset 0 0 10px rgba(100, 100, 150, 0.3) !important;
+}
+
+#mensaje {
+    margin: 30px 0;
+    font-size: 1.2rem;
+    padding: 15px 30px;
+    text-align: center;
+    background: rgba(0, 100, 150, 0.2);
+    border: 2px solid #00d4ff;
+    border-radius: 8px;
+    min-width: 300px;
+    color: #00ff88;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Media query para dispositivos pequeños */
+@media (max-width: 768px) {
+    .tableros {
+        gap: 30px;
+        flex-direction: column;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .tablero {
+        grid-template-columns: repeat(10, 30px);
+        grid-template-rows: repeat(10, 30px);
+    }
+
+    .celda {
+        width: 30px;
+        height: 30px;
+    }
+}
